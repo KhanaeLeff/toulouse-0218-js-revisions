@@ -1,10 +1,16 @@
 import React from 'react'
+import movies from '../movies.json'
+import MovieItem from './MovieItem'
 
 class MovieList extends React.Component {
   render () {
     return (
       <div>
-        MovieList
+        {
+          movies.map(
+            (movie) => <MovieItem movie={movie} />
+          )
+        }
       </div>
     )
   }
