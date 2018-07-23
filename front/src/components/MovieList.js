@@ -1,5 +1,4 @@
 import React from 'react'
-import movies from '../movies.json'
 import MovieItem from './MovieItem'
 
 class MovieList extends React.Component {
@@ -7,7 +6,7 @@ class MovieList extends React.Component {
     return (
       <div>
         {
-          movies.map(
+          this.props.movies.map(
             (movie) => <MovieItem movie={movie} />
           )
         }
