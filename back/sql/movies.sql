@@ -1,0 +1,2 @@
+INSERT INTO movies (title, year, picture) VALUES ('Au Poste', 2018, 'http://fr.web.img6.acsta.net/c_215_290/pictures/18/05/09/17/07/4888503.jpg');
+INSERT INTO movies (title, year, picture) VALUES ('La cage aux folles', 1978, 'https://medias.unifrance.org/medias/195/123/97219/format_page/media.jpg');
