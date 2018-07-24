@@ -3,7 +3,25 @@ import MovieList from '../components/MovieList'
 
 class MovieListContainer extends Component {
   state={
-    movies:[]
+    movies:[],
+    movieEditingId: false
+  }
+
+  movieUpdated = updatedMovie => {
+    const movieId = updatedMovie.id
+    const newMovies = [...this.state.movies]
+    const index = newMovies.findIndex(movie => {
+      return movie.id === movieId
+    })
+    newMovies.splice(index, 1, updatedMovie)
+    this.setState({ 
+      movies: newMovies,
+      movieEditingId: false 
+    })
+  }
+
+  handleOpenEditing = (id) => {
+    this.setState({ movieEditingId: id })
   }
 
   handleDelete = (id) => {
@@ -32,7 +50,10 @@ class MovieListContainer extends Component {
     const { movies } = this.state
     return <MovieList 
     movies={movies}
-    handleDelete={this.handleDelete} />
+    handleDelete={this.handleDelete}
+    handleOpenEditing={this.handleOpenEditing}
+    movieEditingId={this.state.movieEditingId}
+    movieUpdated={this.movieUpdated} />
   }
 }
 

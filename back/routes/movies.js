@@ -46,4 +46,24 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+  const {title, year, picture} = req.body
+  const query = 'UPDATE movies SET title = ?, year = ?, picture = ? WHERE id = ?'
+  const selectQuery = 'SELECT * from movies WHERE id = ?'
+  db.query(query, [title, year, picture, id], (err, result) => {
+    if (err) {
+      console.error(err)
+      return res.status(500).json({error: 'Database query failed'})
+    }
+    db.query(selectQuery, [id], (err, movies) => {
+      if (err) {
+        console.error(err)
+        return res.status(500).json({error: 'Database query failed'})
+      }
+      res.json(movies[0])
+    })
+  })
+})
+
 module.exports = router
