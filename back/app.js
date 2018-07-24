@@ -11,4 +11,4 @@ app.get('/',(req, res) => {
 
 app.use('/api/movies', movieRouter)
 
-app.listen(5000)
+app.listen(4000)
