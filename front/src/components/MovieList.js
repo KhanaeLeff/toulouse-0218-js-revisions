@@ -7,7 +7,9 @@ class MovieList extends React.Component {
       <div>
         {
           this.props.movies.map(
-            (movie) => <MovieItem movie={movie} />
+            (movie) => <MovieItem 
+              movie={movie}
+              handleDelete={this.props.handleDelete} />
           )
         }
       </div>

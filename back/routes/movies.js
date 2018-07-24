@@ -34,4 +34,16 @@ router.post('/', (req, res) => {
   // db.query('INSERT INTO movies SET ?', [], (err, result) => {})
 })
 
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  const query = 'DELETE FROM movies WHERE id = ?'
+  db.query(query, [id], (err, result) => {
+    if (err) {
+      console.error(err)
+      return res.status(500).json({error: 'Database query failed'})
+    }
+    res.json(result)
+  })
+})
+
 module.exports = router

@@ -5,6 +5,15 @@ class MovieListContainer extends Component {
   state={
     movies:[]
   }
+
+  handleDelete = (id) => {
+    fetch(`/api/movies/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(result =>{})
+  }
+
   componentDidMount () {
     fetch('/api/movies')
     .then(res => res.json())
@@ -13,7 +22,9 @@ class MovieListContainer extends Component {
     }))
   }
   render () {
-    return <MovieList movies={this.state.movies} />
+    return <MovieList 
+    movies={this.state.movies}
+    handleDelete={this.handleDelete} />
   }
 }
 
