@@ -1,0 +1,6 @@
+{
+  "host": "localhost",
+  "user": "yourUserName",
+  "password": "yourPassword",
+  "database": "wild_movies"
+}
