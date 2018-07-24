@@ -11,7 +11,14 @@ class MovieListContainer extends Component {
       method: 'DELETE'
     })
     .then(res => res.json())
-    .then(result =>{})
+    .then(result =>{
+      const movies = [...this.state.movies]
+      const index = movies.findIndex(movie => {
+        return movie.id === id
+      })
+      movies.splice(index, 1)
+      this.setState({ movies: movies })
+    })
   }
 
   componentDidMount () {
@@ -22,8 +29,9 @@ class MovieListContainer extends Component {
     }))
   }
   render () {
+    const { movies } = this.state
     return <MovieList 
-    movies={this.state.movies}
+    movies={movies}
     handleDelete={this.handleDelete} />
   }
 }
